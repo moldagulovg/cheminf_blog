@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <style>
+        body {
+            padding: 10vw;
+            text-align: justify;
+        }
+        img {
+            width: calc(100% - 20vw);
+            display: block;
+            margin: auto;
+        }
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: rgb(92, 92, 92);
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+
+    {% for section in sections %}
+        <h2>{{ section.heading }}</h2>
+        {% for paragraph in section.content %}
+            <p>{{ paragraph }}</p>
+        {% endfor %}
+
+        {% if section.image %}
+            <p class="caption">{{ section.image.caption }}</p>
+            <img src="{{ section.image.src }}" alt="{{ section.image.alt }}">
+        {% endif %}
+    {% endfor %}
+
+    <h2>References</h2>
+    <ol>
+        {% for reference in references %}
+            <li>{{ reference.text }} <a href="{{ reference.link }}">{{ reference.link }}</a></li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

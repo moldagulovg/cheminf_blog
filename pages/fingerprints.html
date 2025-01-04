@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molecules and Fingerprints</title>
+    <style>
+        body {
+            padding: 10vw; /* Padding set to 10% of the viewport width */
+            text-align: justify; /* Justify text blocks */
+        }
+        img {
+            width: calc(100% - 20vw); /* Image width adjusted to fit within the padding */
+            display: block; /* Ensure the image is block-level for better layout */
+            margin: auto; /* Center the image horizontally */
+        }
+        .caption {
+            text-align: center; /* Center the caption */
+            font-style: italic; /* Italicize the caption */
+            color: darkgray; /* Dark gray color for the caption */
+        }
+    </style>
 </head>
 <body>
     <h1>Molecules and Fingerprints</h1>
@@ -19,13 +35,9 @@
 
     <p>Now instead of operating sets of molecular subgraphs for the calculation of Tanimoto similarity, we can directly use binary vectors.</p>
 
-    <p>(a)</p>
-    <img src="https://moldagulovg.github.io/cheminf_blog/media/fps_vis.png" alt="Visualization of molecular fingerprints">
-
-    <p>(b)</p>
-    <img src="https://moldagulovg.github.io/cheminf_blog/media/mol_examples.png" alt="Examples of organic molecules with fingerprints">
-
-    <p>Рисунок 3. (a) 12 примеров органических соединений. (б) Визуализация Morgan Fingerprint (ECFP) для выбранных примеров органических молекул. Morgan Fingerprints были сгенерированы при параметрах радиуса = 2 и длины 128.</p>
+    <img src="https://moldagulovg.github.io/cheminf_blog/media/mol_examples.png" alt="Visualization of molecular fingerprints">
+    <img src="https://moldagulovg.github.io/cheminf_blog/media/fps_vis.png" alt="Examples of organic molecules with fingerprints">
+    <p class="caption">Рисунок 3. (a) 12 примеров органических соединений. (б) Визуализация Morgan Fingerprint (ECFP) для выбранных примеров органических молекул. Morgan Fingerprints были сгенерированы при параметрах радиуса = 2 и длины 128.</p>
 
     <h3>Other Ways of Encoding Molecules?</h3>
     <p>But why shall we only consider the similarity by the collection of atom-bond connectivity subgraphs? We can instead record information about the presence or absence of distinct functional groups within an organic structure (MACCS Keys), or the presence or absence of distinct Pharmacophoric substructures (Pharmaco Prints). There’s also a number of other ways of fingerprinting molecules for the purpose of evaluating their relative similarity, where each method is tailored for a particular purpose.</p>
