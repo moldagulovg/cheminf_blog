@@ -1,0 +1,48 @@
+# [2] Molecules and Fingerprints
+
+## Intro and Background
+Similar molecules display similar properties. This is the biggest premise of cheminformatics. In many cases organic molecules that have very similar structure in terms of carbon skeleton and functional groups, we can infer they will have similar properties, such as bioactivity. 
+
+Lets say we have an enzyme Galymzhanase, which is responsible for Galymzhanic disease. If there’s already an inhibitor known for it, we would like to develop a variant with similar anticancer potency and lets say reduced toxicity / side effects, we can screen molecules as similar as the original one.
+
+## Molecular Fingerprints
+Molecular fingerprints?
+In order to speed up this process and save up computation memory we can encode all possible unique subgraphs into a binary vector of length N, where each bit (0 or 1) is responsible for absence or presence of assigned subgraph. On Figure 2a we can see a molecule of penicillin with distinct subgraphs highlighted in different colors. On Figure 2b you can see which of these subgraphs are assigned to which bit. This way of representing molecules as binary vectors in subgraphs of varying radius (R from 0 to 3) is called Morgan Fingerprint or Extended Connectivity Fingerprints (ECFP).
+Now instead of operating sets of molecular subgraphs for calculation of Tanimoto similarity we can directly use binary vectors. 
+
+(a) 
+![](https://moldagulovg.github.io/cheminf_blog/media/fps_vis.png)
+
+(b)
+![](https://moldagulovg.github.io/cheminf_blog/media/mol_examples.png)
+Рисунок 3. (a) 12 примеров органических соединений. (б) Визуализация Morgan Fingerprint (ECFP) для выбранных примеров органических молекул. Morgan Fingperints были сгенерированы при параметрах радиуса = 2 и длинны 128.
+
+Other ways of encoding molecules?
+But why shall we only consider the similarity by the collection of atom-bond connectivity subgraphs? We can instead record information about the presence or absence of distinct functional groups within organic strcuture (MACCS Keys), or the presence or absence of distinct Pharmacophoric substructures (Pharmaco Prints). There’s also a number of other ways of fingerprinting molecules for the purpose of evaluating their relative similarity, where each method is tailored for a particular purpose.
+Look at the similarity of 3D shapes of molecules or similarity of Electrostatic Potentials of molecules. 
+
+
+## Molecular Similarity
+But how can we assess if two non-identical molecules are similar at all?
+we can take graph representations of two molecules, break them into distinct, subgraphs (or how chemists would prefer call it as fragments) and record unique subgraphs into two respective sets. Now we can take the intersection of these two sets and divide it by the total number of of unique subgraphs for considered molecules, as defined by Tanimoto similarity of two molecules in the range from 0 to 1. `the higher the similarity of two molecules the closer to values will be to each other, and vice versa. Figure 1a shows structures of acetone and benzene. Figure 1b shows the division of these two molecules into sets of fragments. Figure 1c shows calculation of Tanimoto similarity score using two sets of fragments. You can see a pair of similar molecules (0.95) and quite dissimilar molecules (0.32) in terms of their subgraph sets and Tanimoto similarity scores.
+
+What kind of similarity metrics are there?
+Carbo similarity
+Tanimoto similarity
+Tversky similarity
+
+
+
+## Similarity Searching
+text explanation
+
+## Chemical Space
+Text. We can use the inverse of similarity as the distance metrics.
+
+## Epilogue
+Next time we will show you how we can use similarity search in databases, and how to traverse the chemical space through chemical reactions.
+
+## References
+(1) Similarity. J. Med. Chem. 2014, 57, 8, 3186–3204 https://doi.org/10.1021/jm401411z
+(2) ECFP. J. Chem. Inf. Model. 2010, 50, 5, 742–754 https://doi.org/10.1021/ci100050t
+(3) Chemical similarity searching. J. Chem. Inf. Comput. Sci. 1998, 38, 6, 983–996 https://doi.org/10.1021/ci9800211
